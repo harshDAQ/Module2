@@ -1,0 +1,68 @@
+class BankAccount {
+    private double balance;
+
+    public BankAccount(double initialBalance) {
+        balance = initialBalance;
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+        } else {
+            System.out.println("Insufficient balance.");
+        }
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+
+class SavingsAccount extends BankAccount {
+    public SavingsAccount(double initialBalance) {
+        super(initialBalance);
+    }
+
+    @Override
+    public void withdraw(double amount) {
+        if (amount > 1000) {
+            System.out.println("Cannot withdraw more than $1000 at a time from Savings Account.");
+        } else {
+            super.withdraw(amount);
+        }
+    }
+}
+
+class CheckingAccount extends BankAccount {
+    public CheckingAccount(double initialBalance) {
+        super(initialBalance);
+    }
+
+    @Override
+    public void withdraw(double amount) {
+        if (amount > getBalance() + 500) {
+            System.out.println("Overdraft limit exceeded.");
+        } else {
+            super.withdraw(amount);
+            if (getBalance() < 0) {
+                System.out.println("Overdraft fee applied.");
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        SavingsAccount savings = new SavingsAccount(2000);
+        savings.withdraw(1500);
+        System.out.println("Savings Account Balance: $" + savings.getBalance());
+
+        CheckingAccount checking = new CheckingAccount(500);
+        checking.withdraw(900);
+        System.out.println("Checking Account Balance: $" + checking.getBalance());
+    }
+}
