@@ -1,0 +1,37 @@
+class Vehicle {
+    protected int speed;
+
+    public void speedUp() {
+        speed += 10;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+}
+
+class Car extends Vehicle {
+    @Override
+    public void speedUp() {
+        speed += 20;
+    }
+}
+
+class Bicycle extends Vehicle {
+    @Override
+    public void speedUp() {
+        speed += 5;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.speedUp();
+        System.out.println("Car speed: " + car.getSpeed() + " km/h");
+
+        Bicycle bicycle = new Bicycle();
+        bicycle.speedUp();
+        System.out.println("Bicycle speed: " + bicycle.getSpeed() + " km/h");
+    }
+}
