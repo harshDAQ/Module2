@@ -1,0 +1,88 @@
+abstract class Vehicle {
+    String make, model;
+    int year;
+    String fuelType;
+
+    Vehicle(String make, String model, int year, String fuelType) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.fuelType = fuelType;
+    }
+
+    abstract double calculateFuelEfficiency();
+    abstract double distanceTraveled(double fuelAmount);
+    abstract double maxSpeed();
+}
+
+class Truck extends Vehicle {
+    Truck(String make, String model, int year, String fuelType) {
+        super(make, model, year, fuelType);
+    }
+
+    @Override
+    double calculateFuelEfficiency() {
+        return 8.0; // mpg
+    }
+
+    @Override
+    double distanceTraveled(double fuelAmount) {
+        return fuelAmount * calculateFuelEfficiency();
+    }
+
+    @Override
+    double maxSpeed() {
+        return 120.0; // mph
+    }
+}
+
+class Car extends Vehicle {
+    Car(String make, String model, int year, String fuelType) {
+        super(make, model, year, fuelType);
+    }
+
+    @Override
+    double calculateFuelEfficiency() {
+        return 25.0; // mpg
+    }
+
+    @Override
+    double distanceTraveled(double fuelAmount) {
+        return fuelAmount * calculateFuelEfficiency();
+    }
+
+    @Override
+    double maxSpeed() {
+        return 150.0; // mph
+    }
+}
+
+class Motorcycle extends Vehicle {
+    Motorcycle(String make, String model, int year, String fuelType) {
+        super(make, model, year, fuelType);
+    }
+
+    @Override
+    double calculateFuelEfficiency() {
+        return 50.0; // mpg
+    }
+
+    @Override
+    double distanceTraveled(double fuelAmount) {
+        return fuelAmount * calculateFuelEfficiency();
+    }
+
+    @Override
+    double maxSpeed() {
+        return 180.0; // mph
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Vehicle car = new Car("Toyota", "Camry", 2020, "Gasoline");
+        System.out.println("Car Fuel Efficiency: " + car.calculateFuelEfficiency() + " mpg");
+        System.out.println("Car Distance Traveled: " + car.distanceTraveled(10) + " miles");
+        System.out.println("Car Max Speed: " + car.maxSpeed() + " mph");
+    }
+}
