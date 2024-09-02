@@ -1,0 +1,40 @@
+abstract class Person {
+    abstract void eat();
+    abstract void exercise();
+}
+
+class Athlete extends Person {
+    @Override
+    void eat() {
+        System.out.println("Athlete eats a balanced diet full of proteins and carbohydrates.");
+    }
+
+    @Override
+    void exercise() {
+        System.out.println("Athlete exercises daily with intense training sessions.");
+    }
+}
+
+class LazyPerson extends Person {
+    @Override
+    void eat() {
+        System.out.println("LazyPerson eats fast food and snacks.");
+    }
+
+    @Override
+    void exercise() {
+        System.out.println("LazyPerson prefers to relax on the couch instead of exercising.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person athlete = new Athlete();
+        athlete.eat();
+        athlete.exercise();
+
+        Person lazyPerson = new LazyPerson();
+        lazyPerson.eat();
+        lazyPerson.exercise();
+    }
+}
