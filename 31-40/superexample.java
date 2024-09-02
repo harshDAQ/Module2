@@ -10,7 +10,7 @@ class Vehicle{
     }
 }
 
-class NewCar extends Vehicleclass{
+class NewCar extends Vehicle{
     int maxspeed = 200;
     NewCar(){
         super();
