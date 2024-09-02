@@ -1,0 +1,53 @@
+// Question 1
+class BankAccount {
+    private double balance;
+
+    public BankAccount(double initialBalance) {
+        balance = initialBalance;
+    }
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
+
+    public void withdraw(double amount) {
+        if (amount <= balance) {
+            balance -= amount;
+        } else {
+            System.out.println("Insufficient balance.");
+        }
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+
+class SavingsAccount extends BankAccount {
+    public SavingsAccount(double initialBalance) {
+        super(initialBalance);
+    }
+
+    @Override
+    public void withdraw(double amount) {
+        if (getBalance() - amount < 100) {
+            System.out.println("Cannot withdraw. Minimum balance of $100 required.");
+        } else {
+            super.withdraw(amount);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        SavingsAccount account = new SavingsAccount(200);
+        account.deposit(50);
+        System.out.println("Balance: $" + account.getBalance());
+
+        account.withdraw(100);
+        System.out.println("Balance: $" + account.getBalance());
+
+        account.withdraw(150);
+        System.out.println("Balance: $" + account.getBalance());
+    }
+}
