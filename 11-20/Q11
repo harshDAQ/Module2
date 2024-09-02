@@ -1,0 +1,38 @@
+class Student {
+    String name;
+    int rollNo;
+    double marks;
+
+    public Student(String name, int rollNo, double marks) {
+        this.name = name;
+        this.rollNo = rollNo;
+        this.marks = marks;
+    }
+
+    public void displayDetails() {
+        System.out.println("Name: " + name + ", Roll No: " + rollNo + ", Marks: " + marks);
+    }
+}
+
+class Toppers extends Student {
+    public Toppers(String name, int rollNo, double marks) {
+        super(name, rollNo, marks);
+    }
+
+    @Override
+    public void displayDetails() {
+        System.out.println("Topper - " + name + ": " + marks);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Toppers topper1 = new Toppers("Alice", 1, 98.5);
+        Toppers topper2 = new Toppers("Bob", 2, 96.2);
+        Toppers topper3 = new Toppers("Charlie", 3, 95.8);
+
+        topper1.displayDetails();
+        topper2.displayDetails();
+        topper3.displayDetails();
+    }
+}
